@@ -1,0 +1,54 @@
+---
+title: "Models Tab"
+description: "Manage inverter models and their register settings"
+---
+
+## Models Tab
+
+Manage inverter models and their register settings.
+
+### Overview
+
+- **Model List:** Displays all available models (CSV files).
+- **Settings Table:** Shows register settings for the selected model.
+- **Management Panel:** Add, modify, or delete models and settings.
+
+### Step-by-Step Guide
+
+1. **Viewing Models**
+   - The left panel lists all models.
+   - Select a model to view its settings in the table.
+
+2. **Adding a Model**
+   - Enter a new model name (must end with `.csv`).
+   - Click **Add Model**.
+   - The new model appears in the list and is created in the `models/` directory.
+
+3. **Deleting a Model**
+   - Select a model from the list.
+   - Click **Delete Model** to remove it.
+
+4. **Viewing and Editing Settings**
+   - The settings table displays register settings for the selected model.
+   - Columns may include: `slave_id`, `register_type`, `register_address`, `data_type`, `scale`, `byte_order`, `units`, etc.
+
+5. **Adding a Setting**
+   - Click **Add Setting**.
+   - Fill in the required fields (data type, byte order, etc.).
+   - Click **OK** to save.
+
+6. **Modifying a Setting**
+   - Select a row in the settings table.
+   - Click **Modify Setting**.
+   - Edit the fields and click **OK**.
+
+7. **Deleting a Setting**
+   - Select a row in the settings table.
+   - Click **Delete Setting**.
+
+**Screenshot Placeholder:**  
+*Insert screenshot of the Models tab showing the model list and settings table.*
+
+**Notes:**
+- All changes are saved to the model's CSV file.
+- Use consistent naming for models and settings for easier management.

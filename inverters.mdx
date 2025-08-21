@@ -1,0 +1,52 @@
+---
+title: "Inverters Tab"
+description: "Manage inverter devices in your system"
+---
+
+## Inverters Tab
+
+This tab allows you to manage all inverter devices in your system.
+
+### Overview
+
+- **Table View:** Displays all inverters with columns for ID, Name, IP Address, Port, Model, and Addressing Type.
+- **Form Panel:** Add or edit inverter details.
+- **Action Buttons:** Add, Modify, Delete.
+
+### Step-by-Step Guide
+
+1. **Viewing Inverters**
+   - All inverters are listed in a table.
+   - Columns:  
+     - **ID:** Unique identifier (auto-generated).
+     - **Inverter Name:** Descriptive name (auto-generated, editable in CSV).
+     - **IP Address:** Network address (e.g., `192.168.100.1`).
+     - **Port:** Communication port (e.g., `502`).
+     - **Model:** Select from available models (e.g., `SG4400`).
+     - **One Based Addressing:** Choose `true` or `false`.
+
+2. **Adding an Inverter**
+   - Fill in the IP Address, Port, Model, and Addressing Type.
+   - Click **Add**.
+   - The new inverter appears in the table and is saved to `inverters/inverters.csv`.
+
+3. **Editing an Inverter**
+   - Select a row in the table.
+   - The form is populated with the inverter's details.
+   - Modify the fields as needed.
+   - Click **Modify** to save changes.
+
+4. **Deleting an Inverter**
+   - Select a row in the table.
+   - Click **Delete** to remove the inverter.
+
+5. **Sorting and Filtering**
+   - Click column headers to sort.
+   - Use the search/filter features (if available) to find specific inverters.
+
+**Screenshot Placeholder:**  
+*Insert screenshot of the Inverters tab showing the table and form panel.*
+
+**Notes:**
+- All changes are saved automatically to the CSV file.
+- If you encounter errors (e.g., invalid IP address), check your input and try again.

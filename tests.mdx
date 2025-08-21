@@ -1,0 +1,44 @@
+---
+title: "Tests Tab"
+description: "Configure and test Modbus registers for inverters"
+---
+
+## Tests Tab
+
+Configure and test Modbus registers for inverters.
+
+### Overview
+
+- **Test Results Table:** Shows all register tests.
+- **Register Configuration Panel:** Add new tests.
+- **Action Buttons:** Add, Modify, Delete, Test.
+
+### Step-by-Step Guide
+
+1. **Adding a Register Test**
+   - Fill in the model, IP address, port, register type, register number, data type, and units.
+   - For string data types, specify the number of bytes.
+   - Click **Add** to create a new test entry.
+
+2. **Modifying a Register Test**
+   - Select a row in the table.
+   - Click **Modify** to edit the details.
+
+3. **Deleting a Register Test**
+   - Select a row in the table.
+   - Click **Delete** to remove the entry.
+
+4. **Testing a Register**
+   - Select a row and click **Test**.
+   - The app will attempt to fetch the actual value from the device.
+   - If unreachable, "N/A" is shown.
+
+5. **Understanding Table Columns**
+   - Columns: `Date Time`, `Inverter`, `Register Address`, `Data Type`, `Description`, `Scaling`, `Actual Value`, `Units`, `Correct Settings`.
+
+**Screenshot Placeholder:**  
+*Insert screenshot of the Tests tab showing the test results table and configuration panel.*
+
+**Notes:**
+- Ensure device connectivity for successful register tests.
+- Use correct data types and register numbers for accurate results.

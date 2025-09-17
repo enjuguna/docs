@@ -1,0 +1,40 @@
+---
+title: "Security, Performance, and Production Notes"
+description: "Best practices and configuration notes for production deployments"
+---
+
+# Security, Performance, and Production Notes
+
+## Security
+
+- API authentication is disabled by default for development; enable JWT or API keys for production use.
+- Tokens are required for remote site features—store and share securely.
+- Limit API exposure to only trusted networks for safety.
+
+## Performance and Reliability
+
+- Backend/data is lightweight: flat CSV for easy migration and backup.
+- For persistent Windows service, consider using NSSM or equivalent service manager.
+- Desktop (Electron) mode enables reliable offline access.
+
+## Networking
+
+- Only use required ports:
+    - Backend: 3031
+    - Frontend: 8080 (or Electron local)
+    - Modbus: 502
+- Always configure firewall exceptions for required ports.
+- Block unused or unnecessary ports in production.
+
+## Deployment Guidance
+
+- Regularly back up all CSV storage folders.
+- Regenerate and redeploy backend executable after code changes.
+- Validate environment meets all prerequisites prior to deployment (OS, folder layout, executable presence).
+- Consider network policy and access rights for remote and Modbus use.
+
+---
+
+**Notes:**
+- Enable security features before moving application to live usage.
+- Document all local changes and procedures for future maintenance.

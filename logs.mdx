@@ -5,33 +5,51 @@ description: "Monitor and manage application logs"
 
 ## Logs Tab
 
-Monitor and manage application logs.
+Purpose: View system activity logs.
 
-### Overview
+### Features
 
-- **Log Viewer:** Displays logs from `app.log`.
-- **Filter Dropdown:** Select log severity (All, Info, Warning, Error).
-- **Action Buttons:** Refresh Logs, Clear Logs.
+- Log list with badges for timestamp/severity
+- Filter by level (All, Info, Warning, Error)
+- Refresh logs
+- Clear logs
+
+### API Endpoints Used
+
+- `GET /api/v1/logs`
+- `DELETE /api/v1/logs`
+- `POST /api/v1/logs/refresh`
+
+### Data Stored In
+
+- [`logs/application.log`](logs/application.log:1)
+
+### UI Components
+
+- Scrollable log list, filter & action buttons
+
+---
 
 ### Step-by-Step Guide
 
 1. **Viewing Logs**
    - Logs are displayed in real time.
-   - Color coding helps distinguish severity levels.
+   - Color coding helps distinguish severity levels using badges.
 
 2. **Filtering Logs**
-   - Use the dropdown to filter by Info, Warning, or Error.
+   - Use dropdown to filter by Info, Warning, or Error.
 
 3. **Refreshing Logs**
    - Click **Refresh Logs** to reload the log file.
 
 4. **Clearing Logs**
    - Click **Clear Logs** to remove all entries.
-   - A confirmation message will appear.
+   - Confirmation required.
 
-**Screenshot Placeholder:**  
+**Screenshot Placeholder:**
 *Insert screenshot of the Logs tab showing the log viewer and controls.*
 
 **Notes:**
-- Logs help diagnose issues and monitor system activity.
-- Clearing logs does not affect application data.
+- Logs diagnose issues and monitor system activity.
+- Clearing logs does not affect main application data, only log display.
+- Use error entries in logs, especially those marked `[ERROR]`, for troubleshooting.

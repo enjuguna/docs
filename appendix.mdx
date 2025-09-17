@@ -1,0 +1,52 @@
+---
+title: "Appendix: Sample CSV Layouts"
+description: "Reference samples for inverter, model, result, and log CSV files"
+---
+
+# Appendix: Sample CSV Layouts
+
+This section illustrates sample CSV formats used throughout the Inverter Settings Application.
+
+---
+
+## inverters/inverters.csv
+
+```csv
+id,name,ipAddress,port,model,oneBasedAddressing
+1,"Main inverter","192.168.100.100",502,"SG4400",true
+...
+```
+
+---
+
+## models/SG4400.csv
+
+```csv
+SlaveID,RegisterType,RegisterAddress,DataType,Scale,ByteOrder,WordOrder,Units,Description,ExpectedValue
+1,holding,40001,uint16,1.0,MSB,MSW,V,"DC Voltage",380
+...
+```
+
+---
+
+## results/SG4400_results.csv
+
+```csv
+Date Time,Inverter,Register Address,Description,Scaling,Actual Value,Expected Value,Units,Correct Settings
+2025-09-17 10:30:00,SG4400-Warning,40001,DC Voltage,1.0,N/A,380.0,V,N/A
+...
+```
+
+---
+
+## logs/application.log
+
+```log
+[API] 2025/09/03 12:54:59 [MODEL] Loaded 50 registers from models/SG4400.csv
+[API] 2025/09/03 12:54:59 [ERROR] Failed to connect to inverter
+...
+```
+
+---
+
+> For details on column meanings, refer to the relevant tab documentation (Inverters, Models, Verification, Logs).

@@ -5,48 +5,69 @@ description: "Manage inverter devices in your system"
 
 ## Inverters Tab
 
-This tab allows you to manage all inverter devices in your system.
+Purpose: Add and manage inverter devices.
 
-### Overview
+### Features
 
-- **Table View:** Displays all inverters with columns for ID, Name, IP Address, Port, Model, and Addressing Type.
-- **Form Panel:** Add or edit inverter details.
-- **Action Buttons:** Add, Modify, Delete.
+- View/list all inverters (ID, Name, IP address, Port, Model, One-Based Addressing)
+- Search/filter by name/IP
+- Pagination (10 results per page)
+- Add new inverter (fill out form, select model from dropdown)
+- Click row to select inverter for editing/modification
+- Edit/delete inverter (UI reflects changes instantly)
+
+### API Endpoints Used
+
+- `GET /api/v1/inverters`
+- `POST /api/v1/inverters`
+- `PUT /api/v1/inverters`
+- `DELETE /api/v1/inverters`
+
+### Data Stored In
+
+- [`inverters/inverters.csv`](inverters/inverters.csv:1)
+
+### UI Components
+
+- Table with colored badges for model/one-based
+- Right-hand form for edits
+
+---
 
 ### Step-by-Step Guide
 
 1. **Viewing Inverters**
    - All inverters are listed in a table.
-   - Columns:  
+   - Columns:
      - **ID:** Unique identifier (auto-generated).
-     - **Inverter Name:** Descriptive name (auto-generated, editable in CSV).
+     - **Inverter Name:** Descriptive name.
      - **IP Address:** Network address (e.g., `192.168.100.1`).
      - **Port:** Communication port (e.g., `502`).
      - **Model:** Select from available models (e.g., `SG4400`).
-     - **One Based Addressing:** Choose `true` or `false`.
+     - **One Based Addressing:** `true` or `false`.
 
 2. **Adding an Inverter**
-   - Fill in the IP Address, Port, Model, and Addressing Type.
+   - Fill in the IP Address, Port, Model, Addressing Type.
    - Click **Add**.
-   - The new inverter appears in the table and is saved to `inverters/inverters.csv`.
+   - The new inverter appears in the table and is saved to [`inverters/inverters.csv`](inverters/inverters.csv:1).
 
 3. **Editing an Inverter**
    - Select a row in the table.
    - The form is populated with the inverter's details.
-   - Modify the fields as needed.
+   - Modify fields as needed.
    - Click **Modify** to save changes.
 
 4. **Deleting an Inverter**
-   - Select a row in the table.
-   - Click **Delete** to remove the inverter.
+   - Select row in the table.
+   - Click **Delete** to remove inverter.
 
 5. **Sorting and Filtering**
    - Click column headers to sort.
    - Use the search/filter features (if available) to find specific inverters.
 
-**Screenshot Placeholder:**  
+**Screenshot Placeholder:**
 *Insert screenshot of the Inverters tab showing the table and form panel.*
 
 **Notes:**
 - All changes are saved automatically to the CSV file.
-- If you encounter errors (e.g., invalid IP address), check your input and try again.
+- Errors (e.g., invalid IP address) surface as validation feedback in UI.

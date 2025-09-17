@@ -1,0 +1,65 @@
+---
+title: "Folder Arrangement & File Structure"
+description: "Detailed overview of project folders and file organization for the Inverter Settings Application"
+---
+
+# Folder Arrangement & File Structure
+
+Project root: `c:/Users/{user}/Inverter_settings/`
+
+```
+|- api/                   // Go API source code
+|    |- main.go, server.go, handlers.go, models.go, user_service.go, database.go, README.md
+|
+|- cli/                   // CLI tools, mock Modbus, CSV test folders
+|    |- main.go, modbus_reader.go, sub-dirs (inverters/, logs/, models/, results/, tests/)
+|
+|- data/
+|    |- inverter_settings.db  // SQLite (may store user/settings)
+|
+|- frontend/               // React/Electron frontend
+|    |- src/
+|         |- App.tsx      // Main app, routing, expiration overlay
+|         |- pages/       // Login, Index, NotFound, Settings
+|         |- components/  // Tabs (see below), UI
+|             |- tabs/
+|                 |- InvertersTab.tsx, ModelsTab.tsx, TestsTab.tsx, VerificationTab.tsx, LogsTab.tsx, RemoteTab.tsx
+|         |- contexts/
+|             |- AuthContext.tsx, ExpirationContext.tsx // Handles login and expiration lock
+|         |- lib/
+|             |- api.ts (API interface), utils.ts
+|    |- electron/         // Desktop-electron main files
+|    |- public/, config, styles, package.json, README.md, etc.
+|
+|- inverters/
+|    |- inverters.csv     // Devices configuration
+|
+|- logs/
+|    |- application.log   // App logs in [SOURCE] YYYY/MM/DD HH:MM:SS [CATEGORY] Message format
+|
+|- models/
+|    |- SG4400.csv, SG6000.csv, ...  // Each model's register definition
+|
+|- production/
+|    |- start.bat         // Launches inverter_server.exe
+|    |- stop.bat          // Terminates inverter_server.exe
+|
+|- results/
+|    |- SG4400_results.csv, SG6000_results.csv, ...  // Verification exports
+|
+|- tests/
+|    |- test_devices.csv, test_registers.csv, test_registers_details.csv
+|
+|- types/
+|    |- types.go          // Go types
+|
+|- .gitignore
+|- go.mod / go.sum
+|- README.md  // (Note: desktop Qt info, but use React web/Electron as main UI)
+|- start_server.bat / stop_server.bat (global service scripts, if needed)
+|- Makefile
+|- main.go    // May serve as system entry point
+|- instructions.txt  // This documentation
+```
+
+> For more details about individual folders, review dedicated sections in this documentation.

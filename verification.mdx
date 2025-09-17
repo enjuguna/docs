@@ -5,37 +5,53 @@ description: "View, filter, and export verification results"
 
 ## Verification Tab
 
-View, filter, and export verification results.
+Purpose: Run and export verification results, compare settings.
 
-### Overview
+### Features
 
-- **Results File Selector:** Choose a CSV file to view results.
-- **Results Table:** Displays verification data.
-- **Device Filter:** Focus on specific devices.
-- **Export/Verify Panel:** Export results or check for missing values.
+- View results (DateTime, Inverter, Model, Address, Description, Scaling, Actual/Expected Value, Units, Correct flag)
+- Filter by matching/non-matching
+- Run verification on all or filtered by model
+- Export results to CSV
+
+### API Endpoints Used
+
+- `GET /api/v1/verification/results`
+- `POST /api/v1/verify`
+- `POST /api/v1/export`
+
+### Data Stored In
+
+- [`results/{modelname}_results.csv`](results/)
+
+### UI Components
+
+- Table, filter dropdown, buttons for Verify/Export
+
+---
 
 ### Step-by-Step Guide
 
 1. **Viewing Results**
-   - Select a results file from the dropdown.
-   - The table displays all verification entries.
+   - Select results file from dropdown.
+   - Table displays all verification entries.
 
-2. **Filtering by Device**
-   - Use the device dropdown to show results for a specific inverter/device.
+2. **Filtering Results**
+   - Use dropdown to show results for a specific inverter/model or to filter correct/incorrect entries.
 
 3. **Exporting Results**
-   - Click **Export Results** to save the currently visible rows to `results/exported_results.csv`.
+   - Click **Export Results** to save the currently visible rows to a CSV file.
 
-4. **Verifying Results**
-   - Click **Verify Results** to check for missing or empty values.
-   - A dialog will report any issues found.
+4. **Running Verification**
+   - Click **Verify Results** to check settings. Dialog reports any issues found.
 
-5. **Understanding Table Columns**
-   - Common columns: `Date Time`, `Inverter`, `Register Address`, `Data Type`, `Description`, `Scaling`, `Actual Value`, `Units`, `Correct Settings`.
+5. **Table Columns**
+   - Common columns: Date Time, Inverter, Model, Register Address, Description, Scaling, Actual Value, Expected Value, Units, Correct Settings.
 
-**Screenshot Placeholder:**  
+**Screenshot Placeholder:**
 *Insert screenshot of the Verification tab showing the results table and export/verify panel.*
 
 **Notes:**
 - Only visible rows are exported.
 - Verification helps ensure data completeness before reporting.
+- Data is sourced from the results CSV files for selected models.

@@ -5,40 +5,61 @@ description: "Configure and test Modbus registers for inverters"
 
 ## Tests Tab
 
-Configure and test Modbus registers for inverters.
+Purpose: Configure and run tests on inverter register data (mock Modbus).
 
-### Overview
+### Features
 
-- **Test Results Table:** Shows all register tests.
-- **Register Configuration Panel:** Add new tests.
-- **Action Buttons:** Add, Modify, Delete, Test.
+- Table of test registers (multi-select possible)
+- Add test (IP address, Port, Register Type, Number, Data Type, Number of Bytes, Units)
+- Edit/delete test configuration
+- Run test(s): Single, multiple, or all
+- Table displays value & last tested
+
+### API Endpoints Used
+
+- `GET /api/v1/test/registers`
+- `POST /api/v1/test/registers`
+- `PUT /api/v1/test/registers`
+- `DELETE /api/v1/test/registers`
+- `POST /api/v1/test/run`
+
+### Data Stored In
+
+- [`tests/test_devices.csv`](tests/test_devices.csv:1), [`tests/test_registers.csv`](tests/test_registers.csv:1)
+
+### UI Components
+
+- Table, action buttons, data-type dependent inputs (bytes if string)
+
+---
 
 ### Step-by-Step Guide
 
 1. **Adding a Register Test**
-   - Fill in the model, IP address, port, register type, register number, data type, and units.
-   - For string data types, specify the number of bytes.
+   - Fill in model, IP address, port, register type, register number, data type, and units.
+   - For string data types, specify number of bytes.
    - Click **Add** to create a new test entry.
 
-2. **Modifying a Register Test**
+2. **Editing a Register Test**
    - Select a row in the table.
-   - Click **Modify** to edit the details.
+   - Click **Modify** to edit details.
 
 3. **Deleting a Register Test**
    - Select a row in the table.
-   - Click **Delete** to remove the entry.
+   - Click **Delete** to remove entry.
 
-4. **Testing a Register**
-   - Select a row and click **Test**.
-   - The app will attempt to fetch the actual value from the device.
+4. **Running a Register Test**
+   - Select row(s) and click **Test**.
+   - The app will attempt to fetch the actual value from the device or simulated data.
    - If unreachable, "N/A" is shown.
 
-5. **Understanding Table Columns**
-   - Columns: `Date Time`, `Inverter`, `Register Address`, `Data Type`, `Description`, `Scaling`, `Actual Value`, `Units`, `Correct Settings`.
+5. **Table Columns**
+   - Columns: Date Time, Inverter, Register Address, Data Type, Description, Scaling, Actual Value, Units, Correct Settings.
 
-**Screenshot Placeholder:**  
+**Screenshot Placeholder:**
 *Insert screenshot of the Tests tab showing the test results table and configuration panel.*
 
 **Notes:**
 - Ensure device connectivity for successful register tests.
 - Use correct data types and register numbers for accurate results.
+- Data for tests is persisted automatically to the CSV files indicated above.

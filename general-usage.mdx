@@ -5,21 +5,85 @@ description: "How to launch and navigate the Inverter Settings Checker applicati
 
 ## General Usage
 
-### Launching the Application
+### How to Launch the Application (Backend)
 
-- Double-click the executable file to start the app.
-- The main window will open, displaying a tabbed interface at the top.
+**Pre-Deployment Checklist**
+- Ensure `inverter_server.exe` exists in the `production/` folder.
+  - If missing, build it:
+    ```
+    cd api
+    go build -o ../production/inverter_server.exe
+    ```
+- Verify all CSV folders exist (`inverters/`, `models/`, `results/`, `logs/`, `tests/`). The API will auto-create missing files.
+
+**Starting the Backend Server**
+- Run from project root or production folder:
+    ```
+    cd production
+    start.bat
+    ```
+- This launches the server on port 3031.
+
+To confirm:
+- Open browser: `http://localhost:3031/api/v1/health`
+- Or run:
+    ```
+    curl http://localhost:3031/api/v1/health
+    ```
+
+**Stopping the Backend Server**
+- From the same folder, run:
+    ```
+    stop.bat
+    ```
+- Manual method:
+    ```
+    netstat -ano | findstr :3031
+    taskkill /PID <PID> /F
+    ```
+
+### Launching the Application (Frontend Web/Electron)
+
+**Web Version**
+- From `frontend` folder:
+    ```
+    npm install       // install dependencies
+    npm run dev       // start Vite dev server
+    ```
+- Open browser at [`http://localhost:8080`](http://localhost:8080).
+
+**Electron Desktop Version**
+- From `frontend` folder:
+    ```
+    npm install
+    npm run electron
+    ```
+- Opens app in desktop window (if Electron set up).
+
+**Expiration Lock**
+- App locks after September 30, 2025 (see [`ExpirationContext.tsx`](frontend/src/contexts/ExpirationContext.tsx:1)), blocking UI.
+- Change `EXPIRY_UTC` for testing.
+
+### Login & Authentication
+
+- Login screen requires username/password (handled by [`AuthContext.tsx`](frontend/src/contexts/AuthContext.tsx:1)).
+- Session stored locally.
+- All tabs protected (redirect to login until authenticated).
+- No backend authentication enabled by default (future enhancement can add JWT/API key).
+
+---
 
 ### Navigating the Interface
 
-- Tabs: Inverters, Models, Verification, Tests, Logs.
+- Tabs: Inverters, Models, Tests, Verification, Logs, Remote Sites.
 - Click a tab to switch to its section.
-- The menu bar at the top provides Help and About options.
+- Menu bar offers Help and About options.
 
 ### Data Storage
 
-- All data is stored in CSV files for easy backup and integration.
-- Inverter data: `inverters/inverters.csv`
-- Model data: `models/`
-- Results: `results/`
-- Logs: `app.log`
+- All dynamic data persists in CSV files for easy backup and integration.
+    - Inverter data: `inverters/inverters.csv`
+    - Model data: `models/`
+    - Results: `results/`
+    - Logs: `logs/application.log`
+    - Tests: `tests/`

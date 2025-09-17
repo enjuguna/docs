@@ -1,0 +1,67 @@
+---
+title: "Remote Tab"
+description: "Manage verifiable remote inverter sites and view remote results"
+---
+
+# Remote Tab
+
+Purpose: Manage and verify remote inverter sites.
+
+## Features
+
+- List/add/edit/delete remote sites (name, IP, port, token)
+- Display reachability status (green/red dot indicator)
+- Mask/view/copy tokens
+- Verify remote site and view fetched results in modal (filtered, CSV exportable)
+- Display site statistics (total, successful, verifying, errors)
+
+## API Endpoints Used
+
+- `GET /api/v1/sites`
+- `POST /api/v1/sites`
+- `PUT /api/v1/sites`
+- `DELETE /api/v1/sites`
+- Various `/remote/*` endpoints (connect, verify, status)
+
+## Data Stored In
+
+- Sites configuration in [`inverters/inverters.csv`](inverters/inverters.csv:1) or dedicated remote config file
+- Verification results in [`results/{modelname}_results.csv`](results/)
+
+## UI Components
+
+- Main table listing remote sites
+- Dialogs for add/edit site
+- Modal dialog displays verification results (filterable, exportable)
+
+---
+
+### Step-by-Step Guide
+
+1. **Viewing Remote Sites**
+   - All configured remote sites are shown in the main table.
+   - Columns: Name, IP, Port, Token (masked by default), Status (reachability).
+2. **Adding a Remote Site**
+   - Use the Add dialog to enter site details.
+   - Token is required for each remote site.
+3. **Editing or Deleting a Site**
+   - Select a row, click Edit or Delete.
+   - Changes saved automatically.
+4. **Viewing/Copying Tokens**
+   - Toggle mask/view to display/hide tokens.
+   - Click Copy to copy the token value for use.
+5. **Verifying Remote Site**
+   - Select site, click Verify.
+   - Modal dialog shows verification results for registers, exportable to CSV.
+6. **Reviewing Statistics**
+   - Stats for sites: total, successful, verifying, errors shown above table.
+
+---
+
+**Notes:**
+- Tokens should be handled securely.
+- Remote site verification requires correct token and proper network reachability.
+- Exported results allow for archiving or external reporting.
+
+**Screenshot Placeholder:**  
+*Insert screenshot of the Remote Tab showing site list, verification modal, and status indicators.*

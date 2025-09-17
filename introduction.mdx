@@ -3,19 +3,34 @@ title: "Introduction"
 description: "Overview of the Inverter Settings Checker desktop application"
 ---
 
-# Inverter Settings Checker – User Manual
+# INVERTER SETTINGS APPLICATION
+**Production User Guide and Instructions**
 
-Welcome to the Inverter Settings Checker desktop application. This guide provides a comprehensive walkthrough of all features, screens, and workflows to help you get the most out of the app.
+**Version:** 2025-09
+**Last update:** September 17, 2025
+
+Welcome to the Inverter Settings Application, a robust management tool for configuring, testing, verifying, logging, and remotely monitoring solar inverter installations. This guide provides comprehensive production instructions for system administrators and users, covering every operational aspect in keen technical detail.
 
 ---
 
-## Introduction
 
-The Inverter Settings Checker is a modern desktop application for managing inverter devices, models, verification results, and logs. It is designed for professional inverter management and Modbus communication, with a focus on usability and reliability.
+## Overview
+
+The Inverter Settings Application system consists of:
+
+- **Backend:** Go-based REST API, stores/manages configuration data, runs on port 3031.
+- **Frontend:** React/TypeScript web interface, runs on port 8080 or as an Electron desktop app.
+- **Storage:** Data persists in CSV files across defined directories (`inverters/`, `models/`, `results/`, `logs/`, `tests/`).
+- **Expiration:** The frontend app is locked after September 30, 2025.
+
+### Prerequisites
+
+- Windows 11 OS (for production .bat scripts)
+- Network access if Modbus/remote features are used
 
 **Key Features:**
 - Tabbed interface for easy navigation
-- CSV-based data storage for inverters, models, and results
+- CSV-based data storage for inverters, models, results, logs, and tests
 - Real-time log viewer and filtering
-- Export and verification tools for results
-- Modern, responsive UI
+- Verification, export, and monitoring tools
+- Modern, responsive UI via web and Electron

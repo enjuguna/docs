@@ -5,50 +5,72 @@ description: "Manage inverter models and their register settings"
 
 ## Models Tab
 
-Manage inverter models and their register settings.
+Purpose: Manage inverter models and their register settings.
 
-### Overview
+### Features
 
-- **Model List:** Displays all available models (CSV files).
-- **Settings Table:** Shows register settings for the selected model.
-- **Management Panel:** Add, modify, or delete models and settings.
+- List/select models, each is a separate CSV file
+- View all registers for selected model: SlaveID, Type, Address, DataType, Scale, ByteOrder, WordOrder, Units, Desc, Expected
+- Add/edit/delete registers via modal dialog (all fields validated)
+- Create or delete models
+
+### API Endpoints Used
+
+- `GET /api/v1/models`
+- `POST /api/v1/models`
+- `PUT /api/v1/models`
+- `DELETE /api/v1/models`
+- `POST /api/v1/models/{name}/registers`
+- `PUT /api/v1/models/{name}/registers`
+- `DELETE /api/v1/models/{name}/registers`
+
+### Data Stored In
+
+- [`models/{modelname}.csv`](models/)
+
+### UI Components
+
+- List of models, table of registers, dialog for register management
+
+---
 
 ### Step-by-Step Guide
 
 1. **Viewing Models**
-   - The left panel lists all models.
-   - Select a model to view its settings in the table.
+   - The left panel lists all models (from `models/` CSVs).
+   - Select a model to view its register settings in the table.
 
 2. **Adding a Model**
-   - Enter a new model name (must end with `.csv`).
+   - Enter the new model name (must end with `.csv`).
    - Click **Add Model**.
-   - The new model appears in the list and is created in the `models/` directory.
+   - The new model appears in the list and is created in [`models/`](models/).
 
 3. **Deleting a Model**
    - Select a model from the list.
-   - Click **Delete Model** to remove it.
+   - Click **Delete Model**.
 
-4. **Viewing and Editing Settings**
-   - The settings table displays register settings for the selected model.
-   - Columns may include: `slave_id`, `register_type`, `register_address`, `data_type`, `scale`, `byte_order`, `units`, etc.
+4. **Viewing and Editing Registers**
+   - The table displays register settings for the selected model.
+   - Columns include: SlaveID, RegisterType, RegisterAddress, DataType, Scale, ByteOrder, WordOrder, Units, Description, ExpectedValue.
 
-5. **Adding a Setting**
-   - Click **Add Setting**.
-   - Fill in the required fields (data type, byte order, etc.).
+5. **Adding a Register**
+   - Click **Add Register**.
+   - Fill in required fields.
    - Click **OK** to save.
 
-6. **Modifying a Setting**
+6. **Modifying a Register**
    - Select a row in the settings table.
-   - Click **Modify Setting**.
-   - Edit the fields and click **OK**.
+   - Click **Modify Register**.
+   - Edit fields and click **OK**.
 
-7. **Deleting a Setting**
+7. **Deleting a Register**
    - Select a row in the settings table.
-   - Click **Delete Setting**.
+   - Click **Delete Register**.
 
-**Screenshot Placeholder:**  
+**Screenshot Placeholder:**
 *Insert screenshot of the Models tab showing the model list and settings table.*
 
 **Notes:**
-- All changes are saved to the model's CSV file.
-- Use consistent naming for models and settings for easier management.
+- All changes are saved automatically to the model's CSV file.
+- Use consistent naming for models and registers for easier management.
+- Validation ensures settings conform to expected types/formats.

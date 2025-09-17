@@ -1,0 +1,35 @@
+---
+title: "Data Storage, Exports, and Workflows"
+description: "Overview of storage mechanisms, export procedures, and operational workflows"
+---
+
+# Data Storage, Exports, and Workflows
+
+## Storage System
+
+- All dynamic data is stored in CSV files:
+    - Inverters: [`inverters/inverters.csv`](inverters/inverters.csv:1)
+    - Models: [`models/{modelname}.csv`](models/)
+    - Tests: [`tests/test_devices.csv`](tests/test_devices.csv:1), [`tests/test_registers.csv`](tests/test_registers.csv:1)
+    - Results: [`results/{modelname}_results.csv`](results/)
+    - Logs: [`logs/application.log`](logs/application.log:1)
+- For backup, copy CSV folders regularly.
+- When a new model is created, a CSV is made in `models/` and available for selection.
+- System reads/writes via API; frontend flushes changes automatically.
+
+## Exporting Results
+
+- Use Verification/Remote tab to export CSVs.
+- API format: POST to `/api/v1/export` with options (file type, include logs, date range).
+- Downloaded files include all selected/filter data.
+
+## Workflows
+
+- Adding inverters, models, tests, verification, and remote data always results in immediate CSV persistence.
+- Regularly export and archive results as needed for backup and reporting.
+
+---
+
+**Notes:**
+- CSV data storage ensures portability, easy archiving/migration, and transparency.
+- Always ensure folder and file write access for best stability.

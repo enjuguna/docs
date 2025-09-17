@@ -1,0 +1,33 @@
+---
+title: "Extending & Customizing"
+description: "Guidance for adding models, integrating hardware, and enabling authentication"
+---
+
+# Extending & Customizing
+
+## Adding New Models
+
+- Create a valid CSV file in [`models/`](models/) directory for each new inverter model.
+- Reference existing model files for correct column layout and formatting.
+
+## Hardware Integration
+
+- To enable real Modbus register reading, API should be extended with proper hardware libraries (current implementation is mock/simulated).
+- Confirm Modbus hardware is supported and required libraries are available.
+
+## Authentication Enhancements
+
+- To provide login protection via the API, add JWT middleware in backend API server.
+- Update frontend [`AuthContext.tsx`](frontend/src/contexts/AuthContext.tsx:1) to support new authentication flows.
+
+## Remote Site Connection
+
+- Ensure tokens are correct for each remote site.
+- Confirm API endpoints are reachable and network/firewall policies allow connection requests.
+
+---
+
+**Notes:**
+- CSV definitions for models and inverters should be consistent to ensure smooth operation.
+- Always back up CSV files before making bulk changes.
+- Custom integration may require changes to both frontend and backend codebases.

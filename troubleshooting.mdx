@@ -3,24 +3,39 @@ title: "Troubleshooting & Tips"
 description: "Common issues and tips for using the Inverter Settings Checker"
 ---
 
-## Troubleshooting & Tips
+## Troubleshooting & Error Handling
 
-### Common Issues
+### Common API & Application Errors
 
-- **App does not start:**  
-  Ensure all dependencies (Qt, Go) are installed. Check for missing files.
+- **API returns HTTP codes:**
+    - 200/201 OK/Created: Success
+    - 400 Bad Request: Validation error, check required fields
+    - 404 Not Found: CSV/model/inverter missing
+    - 500 Server Error: General system issue
 
-- **Cannot add inverter/model:**  
-  Verify all required fields are filled and valid.
+- **App does not start:**
+  - Ensure all dependencies (Windows 11, Go backend, Node/electron for frontend) are installed.
+  - Confirm presence of `inverter_server.exe`, required folders (`inverters/`, `models/`, etc.).
+  - Check for missing files, review error logs at [`logs/application.log`](logs/application.log:1).
 
-- **Register test shows "N/A":**  
-  Check device connectivity and register details.
+- **Verification/test fails:**
+  - Make sure models and registers are valid.
+  - Confirm inverters exist and Modbus port (`502`) is accessible.
+  - Review front and backend logs for `[ERROR]` entries.
 
-- **Logs not updating:**  
-  Ensure the app has permission to write to `app.log`.
+- **Register test shows "N/A":**
+  Device may be unreachable or register info invalid.
+
+- **Logs not updating:**
+  - Ensure write permission to [`logs/application.log`](logs/application.log:1).
+
+- **Expiration overlay blocks app:**
+  - The UI is locked past September 30, 2025—see [`frontend/src/contexts/ExpirationContext.tsx`](frontend/src/contexts/ExpirationContext.tsx:1).
+  - Change `EXPIRY_UTC` to a future date for continued testing.
 
 ### Tips
 
 - Regularly export and back up your CSV files.
 - Use descriptive names for inverters and models.
-- Consult the Help menu for additional resources.
+- Review API docs and Help menu for further resources.
+- Regenerate `inverter_server.exe` after backend updates for changes to take effect.
